@@ -1,0 +1,6 @@
+@VideoClub.Api_HostAddress = http://localhost:5235
+
+GET {{VideoClub.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

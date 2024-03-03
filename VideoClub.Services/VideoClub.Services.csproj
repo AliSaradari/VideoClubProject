@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VideoClub.Contracts\VideoClub.Contracts.csproj" />
+    <ProjectReference Include="..\VideoClub.Entities\VideoClub.Entities.csproj" />
+  </ItemGroup>
+
+</Project>
