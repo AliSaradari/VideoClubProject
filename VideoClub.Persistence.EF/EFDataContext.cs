@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using VideoClub.Entities.Genres;
+using VideoClub.Entities.Movies;
 
 namespace VideoClub.Persistence.EF
 {
@@ -16,6 +17,7 @@ namespace VideoClub.Persistence.EF
         }
 
         public DbSet<Genre> Genres { get; set; }
+        public DbSet<Movie> Movies { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
