@@ -1,9 +1,11 @@
 ﻿using FluentAssertions;
+using System.Reflection.Emit;
 using VideoClub.Persistence.EF;
 using VideoClub.Services.Movies.Contracts;
 using VideoClub.Test.Tools.Genres;
 using VideoClub.Test.Tools.Infrastructure.DatabaseConfig.Unit;
 using VideoClub.Test.Tools.Moives;
+using Xunit;
 
 namespace VideoClub.Services.Unit.Tests.MoviesManagerServiceTests
 {
@@ -61,5 +63,27 @@ namespace VideoClub.Services.Unit.Tests.MoviesManagerServiceTests
             actual.Count.Should().Be(movie.Count);
         }
 
+        [Theory]
+        [InlineData("Interstaller", "Interstaller")]
+        public async Task Get_gets_films_filtered_by_name(string name, string filter)
+        {
+            var genre = new GenreBuilder().Build();
+            _context.Save(genre);
+            var film = new MovieBuilder(genre.Id)
+                .WithTitle(name)
+                .WithGenreId(genre.Id).Build();
+            _context.Save(film);
+            var film2 = new MovieBuilder(genre.Id)
+               .WithGenreId(genre.Id).Build();
+            _context.Save(film2);
+            var filterDto = new GetMovieManagerFilterDtoBuilder().WithTitle(filter)
+                .Build();
+            var expected = 1;
+
+            var result = await _sut.Get(filterDto);
+
+            result.Count.Should().Be(expected);
+            result.Single().Id.Should().Be(film.Id);
+        }
     }
 }

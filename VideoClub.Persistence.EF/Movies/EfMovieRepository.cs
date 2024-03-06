@@ -43,12 +43,10 @@ namespace VideoClub.Persistence.EF.Movies
                 DailyRentalPrice = m.DailyRentalPrice,
                 PenaltyRates = m.PenaltyRates,
                 Count = m.Count,
-                Rate = m.Rate,
-                
             });
             if(filterDto.Title != null)
             {
-                result = result.Where(m => m.Title == filterDto.Title);
+                result = result.Where(m => m.Title.Replace(" ", string.Empty).ToLower().Contains(filterDto.Title.Replace(" ",string.Empty).ToLower()));
             }
             return result.ToList();
         }

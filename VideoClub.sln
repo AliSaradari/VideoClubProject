@@ -15,21 +15,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.InfraStructure", "02.Inf
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03.Presentation", "03.Presentation", "{F1D692CA-40D9-47B2-B064-1DCD84AD5D16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoClub.Contracts", "VideoClub.Contracts\VideoClub.Contracts.csproj", "{8B79DE48-88DC-42D0-A506-828C071E9A45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoClub.Contracts", "VideoClub.Contracts\VideoClub.Contracts.csproj", "{8B79DE48-88DC-42D0-A506-828C071E9A45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoClub.Entities", "VideoClub.Entities\VideoClub.Entities.csproj", "{F9D1D4D6-1A9C-4ED4-8F73-916AFBE85547}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoClub.Entities", "VideoClub.Entities\VideoClub.Entities.csproj", "{F9D1D4D6-1A9C-4ED4-8F73-916AFBE85547}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoClub.Services", "VideoClub.Services\VideoClub.Services.csproj", "{79A73BA4-2472-45E6-B9D9-F41144454FC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoClub.Services", "VideoClub.Services\VideoClub.Services.csproj", "{79A73BA4-2472-45E6-B9D9-F41144454FC3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoClub.Migrations", "VideoClub.Migrations\VideoClub.Migrations.csproj", "{2200A5DD-1A8D-4E9C-A4E3-5565920F3F14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoClub.Migrations", "VideoClub.Migrations\VideoClub.Migrations.csproj", "{2200A5DD-1A8D-4E9C-A4E3-5565920F3F14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoClub.Persistence.EF", "VideoClub.Persistence.EF\VideoClub.Persistence.EF.csproj", "{CBBA8475-503E-499F-9EBA-8E45C97D7E7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoClub.Persistence.EF", "VideoClub.Persistence.EF\VideoClub.Persistence.EF.csproj", "{CBBA8475-503E-499F-9EBA-8E45C97D7E7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoClub.Api", "VideoClub.Api\VideoClub.Api.csproj", "{0FF9486F-0A09-408A-BD29-E39886FEA58E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoClub.Api", "VideoClub.Api\VideoClub.Api.csproj", "{0FF9486F-0A09-408A-BD29-E39886FEA58E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoClub.Services.Unit.Tests", "VideoClub.Services.Unit.Tests\VideoClub.Services.Unit.Tests.csproj", "{2C8113B5-3752-4931-BE6B-2B33B59BA338}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoClub.Services.Unit.Tests", "VideoClub.Services.Unit.Tests\VideoClub.Services.Unit.Tests.csproj", "{2C8113B5-3752-4931-BE6B-2B33B59BA338}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoClub.Test.Tools", "VideoClub.Test.Tools\VideoClub.Test.Tools.csproj", "{7DB19D32-308D-4AAC-9C3F-AF10C0666129}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoClub.Test.Tools", "VideoClub.Test.Tools\VideoClub.Test.Tools.csproj", "{7DB19D32-308D-4AAC-9C3F-AF10C0666129}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoClub.Infrastructure", "VideoClub.Infrastructure\VideoClub.Infrastructure.csproj", "{77113582-0300-4581-BC1B-A960B4572E34}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{7DB19D32-308D-4AAC-9C3F-AF10C0666129}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DB19D32-308D-4AAC-9C3F-AF10C0666129}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DB19D32-308D-4AAC-9C3F-AF10C0666129}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77113582-0300-4581-BC1B-A960B4572E34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77113582-0300-4581-BC1B-A960B4572E34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77113582-0300-4581-BC1B-A960B4572E34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77113582-0300-4581-BC1B-A960B4572E34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -86,6 +92,7 @@ Global
 		{0FF9486F-0A09-408A-BD29-E39886FEA58E} = {F1D692CA-40D9-47B2-B064-1DCD84AD5D16}
 		{2C8113B5-3752-4931-BE6B-2B33B59BA338} = {1379AE5D-2BE5-4A25-AADE-C0062EBF36B5}
 		{7DB19D32-308D-4AAC-9C3F-AF10C0666129} = {1379AE5D-2BE5-4A25-AADE-C0062EBF36B5}
+		{77113582-0300-4581-BC1B-A960B4572E34} = {762BA231-DAC8-4865-9FFB-E9253E8FBED0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6CB7804A-E165-4C49-8332-3962FE6C9197}

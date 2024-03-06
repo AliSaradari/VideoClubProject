@@ -10,7 +10,6 @@ namespace VideoClub.Test.Tools.Genres
             _genre = new Genre()
             {
                 Title = "dummy-title",
-                Rate = 3
             };
         }
         public GenreBuilder WithTitle(string title)

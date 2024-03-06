@@ -15,7 +15,7 @@ namespace VideoClub.Entities.Movies
         public decimal DailyRentalPrice { get; set; }
         public decimal PenaltyRates { get; set; }
         public int Count { get; set; }
-        public float Rate { get; set; } = 0;
         public Genre genre { get; set; }
+        public DateTime CreatedAt { get; set; }
     }
 }

@@ -10,13 +10,17 @@ namespace VideoClub.Services.Movies
     {
         private readonly MovieRepository _repository;
         private readonly UnitOfWork _unitOfWork;
+        private readonly DateTimeService _dateTimeService;
+       
         public MovieManagerAppService(
             MovieRepository repository,
-            UnitOfWork unitOfWork
+            UnitOfWork unitOfWork,
+            DateTimeService dateTimeService
            )
         {
             _repository = repository;
             _unitOfWork = unitOfWork;
+            _dateTimeService = dateTimeService;
         }
 
         public async Task Add(AddMovieDto dto)
@@ -33,6 +37,7 @@ namespace VideoClub.Services.Movies
                 DailyRentalPrice = dto.DailyRentalPrice,
                 PenaltyRates = dto.PenaltyRates,
                 Count = dto.Count,
+                CreatedAt = _dateTimeService.Now()
             };
             _repository.Add(movie);
             await _unitOfWork.Complete();

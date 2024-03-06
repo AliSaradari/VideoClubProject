@@ -45,7 +45,6 @@ namespace VideoClub.Services.Unit.Tests.GenreManagerServiceTests
 
             var result = actual.Single();
             result.Title.Should().Be(genre.Title);
-            result.Rate.Should().Be(genre.Rate);
         }
     }
 }

@@ -33,7 +33,6 @@ namespace VideoClub.Persistence.EF.Genres
             {
                 Id = g.Id,
                 Title = g.Title,
-                Rate = g.Rate,
             }).ToList();
         }
 
@@ -47,7 +46,6 @@ namespace VideoClub.Persistence.EF.Genres
             return _genres.Select(g => new GetGenreDto()
             {
                 Title = g.Title,
-                Rate = g.Rate,
             }).ToListAsync();
         }
     }

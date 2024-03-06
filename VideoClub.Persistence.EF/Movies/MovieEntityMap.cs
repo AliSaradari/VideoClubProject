@@ -20,7 +20,6 @@ namespace VideoClub.Persistence.EF.Movies
             _.Property(_ => _.DailyRentalPrice).IsRequired();
             _.Property(_ => _.PenaltyRates).IsRequired();
             _.Property(_ => _.Count).IsRequired();
-            _.Property(_ => _.Rate).HasDefaultValue(0);
 
             _.HasOne(_ => _.genre)
                 .WithMany(_ => _.Movies)
