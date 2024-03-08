@@ -6,7 +6,7 @@ namespace VideoClub.Services.Genres.Contracts
     {
         Task Add(AddGenreDto dto);
         Task Delete(int id);
-        Task<List<GetGenreManagerDto>> Get();
+        Task<List<GetGenreManagerDto>> Get(GetGenreManagerFilterDto filterDto);
         Task Update(int id, UpdateGenreDto dto);
     }
 }

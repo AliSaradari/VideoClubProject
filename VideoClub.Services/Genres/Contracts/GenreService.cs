@@ -4,6 +4,6 @@ namespace VideoClub.Services.Genres.Contracts
 {
     public interface GenreService
     {
-        Task<List<GetGenreDto>> Get();
+        Task<List<GetGenreDto>> Get(GetGenreFilterDto dto);
     }
 }

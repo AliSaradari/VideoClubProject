@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using VideoClub.Persistence.EF;
 using VideoClub.Services.Genres.Contracts;
+using VideoClub.Services.Genres.Contracts.Dtos;
 using VideoClub.Test.Tools.Genres;
 using VideoClub.Test.Tools.Infrastructure.DatabaseConfig.Unit;
 
@@ -26,8 +27,12 @@ namespace VideoClub.Services.Unit.Tests.GenreServiceTests
             _context.Save(genre);
             _context.Save(genre2);
             var excepted = 2;
+            var filterDto = new GetGenreFilterDto()
+            {
+                Title = null
+            };
 
-            var actual = await _sut.Get();
+            var actual = await _sut.Get(filterDto);
 
             actual.Count.Should().Be(excepted);
         }
@@ -36,8 +41,12 @@ namespace VideoClub.Services.Unit.Tests.GenreServiceTests
         {
             var genre = new GenreBuilder().Build();
             _context.Save(genre);
+            var filterDto = new GetGenreFilterDto()
+            {
+                Title = null
+            };
 
-            var actual = await _sut.Get();
+            var actual = await _sut.Get(filterDto);
 
             var result = actual.Single();
             result.Title.Should().Be(genre.Title);

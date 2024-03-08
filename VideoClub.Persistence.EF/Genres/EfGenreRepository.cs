@@ -27,13 +27,21 @@ namespace VideoClub.Persistence.EF.Genres
             return _genres.FirstOrDefault(_ => _.Id == id);
         }
 
-        public List<GetGenreManagerDto> ManagerGet()
+        public List<GetGenreManagerDto> ManagerGet(GetGenreManagerFilterDto dto)
         {
-            return _genres.Select(g => new GetGenreManagerDto
+            var result = _genres.Select(g => new GetGenreManagerDto()
             {
                 Id = g.Id,
                 Title = g.Title,
-            }).ToList();
+                
+            });
+            if (dto.Title != null)
+            {
+                result = result.Where(g => g.Title.Replace(" ", string.Empty).ToLower().Contains(dto.Title.Replace(" ", string.Empty).ToLower()));
+
+            }
+
+            return result.ToList();
         }
 
         public bool IsExistGenre(string title)
@@ -41,12 +49,24 @@ namespace VideoClub.Persistence.EF.Genres
             return _genres.Any(_ => _.Title == title);
         }
 
-        public Task<List<GetGenreDto>> Get()
+        public List<GetGenreDto> Get(GetGenreFilterDto dto)
         {
-            return _genres.Select(g => new GetGenreDto()
+            var result = _genres.Select(g => new GetGenreDto()
             {
                 Title = g.Title,
-            }).ToListAsync();
+            });
+            if (dto.Title != null)
+            {
+                result = result.Where(g => g.Title.Replace(" ", string.Empty).ToLower().Contains(dto.Title.Replace(" ",string.Empty).ToLower()));
+            }
+
+            return result.ToList();
         }
+
+        public void Update(Genre genre)
+        {
+
+        }
+
     }
 }

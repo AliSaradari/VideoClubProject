@@ -14,9 +14,9 @@ namespace VideoClub.Api.Controllers.Genres
             _service = service;
         }
         [HttpGet]
-        public async Task<List<GetGenreDto>> Get()
+        public async Task<List<GetGenreDto>> Get([FromBody] GetGenreFilterDto dto )
         {
-            return await _service.Get();
+            return await _service.Get(dto);
         }
     }
 }

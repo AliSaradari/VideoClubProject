@@ -33,6 +33,18 @@ namespace VideoClub.Services.Unit.Tests.MoviesManagerServiceTests
 
             await _sut.Update(movie.Id, dto);
 
+            var actual = _readContext.Movies.Single();
+            actual.Title.Should().Be(dto.Title);
+            actual.Description.Should().Be(dto.Description);
+            actual.PublishYear.Should().Be(dto.PublishYear);
+            actual.Director.Should().Be(dto.Director);
+            actual.Duration.Should().Be(dto.Duration);
+            actual.GenreId.Should().Be(dto.GenreId);
+            actual.MinimumAllowedAge.Should().Be(dto.MinimumAllowedAge);
+            actual.DailyRentalPrice.Should().Be(dto.DailyRentalPrice);
+            actual.PenaltyRates.Should().Be(dto.PenaltyRates);
+            actual.Count.Should().Be(dto.Count);
+
         }
         [Fact]
         public async void Update_throw_exception_when_movie_doesnt_exist()
@@ -44,7 +56,7 @@ namespace VideoClub.Services.Unit.Tests.MoviesManagerServiceTests
 
             var actual = () => _sut.Update(dummyId, dto);
 
-            actual.Should().ThrowExactlyAsync<MovieNotFoundException>();
+            await actual.Should().ThrowExactlyAsync<MovieNotFoundException>();
         }
     }
 }

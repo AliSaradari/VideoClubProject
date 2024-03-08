@@ -1,5 +1,8 @@
 ﻿using FluentAssertions;
+using Moq;
+using VideoClub.Contracts.Interfaces;
 using VideoClub.Persistence.EF;
+using VideoClub.Services.Genres;
 using VideoClub.Services.Genres.Contracts;
 using VideoClub.Services.Genres.Exceptions;
 using VideoClub.Test.Tools.Genres;
@@ -27,6 +30,25 @@ namespace VideoClub.Services.Unit.Tests.GenreManagerServiceTests
 
             await _sut.Delete(genre.Id);
         }
+
+        [Fact]
+        public async void Delete_delete_a_genre_properly_mock()
+        {
+            var genre = new GenreBuilder().Build();
+            genre.Id = 1;
+            var dto = UpdateGenreDtoFactory.Create();
+            var repositoryMock = new Mock<GenreRepository>();
+            var unitOfWorkMock = new Mock<UnitOfWork>();
+            var dateTimeServiceMock = new Mock<DateTimeService>();
+            dateTimeServiceMock.Setup(_ => _.Now()).Returns(new DateTime(2024, 11, 21));
+            var sut = new GenreManagerAppService(repositoryMock.Object, unitOfWorkMock.Object, dateTimeServiceMock.Object);
+            var sutMock = new Mock<GenreManagerAppService>();
+            repositoryMock.Setup(_ => _.FindGenreById(genre.Id)).Returns(genre);
+
+            await sut.Delete(genre.Id);
+
+            unitOfWorkMock.Verify(_ => _.Complete());
+        }
         [Fact]
         public async void Delete_throw_exception_when_genre_doesnt_exist()
         {
@@ -34,7 +56,7 @@ namespace VideoClub.Services.Unit.Tests.GenreManagerServiceTests
 
             var actual = () => _sut.Delete(id);
 
-            actual.Should().ThrowExactlyAsync<GenreNotFoundException>();
+            await actual.Should().ThrowExactlyAsync<GenreNotFoundException>();
         }
     }
 }

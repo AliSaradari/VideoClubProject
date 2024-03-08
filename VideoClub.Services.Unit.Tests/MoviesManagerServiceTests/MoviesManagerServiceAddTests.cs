@@ -19,6 +19,8 @@ namespace VideoClub.Services.Unit.Tests.MoviesManagerServiceTests
         private readonly EFDataContext _context;
         private readonly EFDataContext _readContext;
         private readonly DateTime _fakeDate;
+        //private readonly MovieManagerAppService _sutMock;
+        //private readonly MovieRepository _movieRepositoryMock;
         public MoviesManagerServiceAddTests()
         {
             var db = new EFInMemoryDatabase();
@@ -26,6 +28,8 @@ namespace VideoClub.Services.Unit.Tests.MoviesManagerServiceTests
             _readContext = db.CreateDataContext<EFDataContext>();
             _fakeDate = new DateTime(2023, 10, 10);
             _sut = MovieManagerServiceFactory.Create(_context, _fakeDate);
+            //_sutMock = MovieManagerServiceMockBuilder.Create();
+            //_movieRepositoryMock = 
         }
         [Fact]
         public async void Add_add_a_new_movie_properly()
@@ -40,9 +44,9 @@ namespace VideoClub.Services.Unit.Tests.MoviesManagerServiceTests
             actual.Title.Should().Be(dto.Title);
             actual.Description.Should().Be(dto.Description);
             actual.PublishYear.Should().Be(dto.PublishYear);
-            actual.Director.Should().Be(dto.Director);  
+            actual.Director.Should().Be(dto.Director);
             actual.Duration.Should().Be(dto.Duration);
-            actual.GenreId.Should().Be(dto.GenreId);   
+            actual.GenreId.Should().Be(dto.GenreId);
             actual.MinimumAllowedAge.Should().Be(dto.MinimumAllowedAge);
             actual.DailyRentalPrice.Should().Be(dto.DailyRentalPrice);
             actual.PenaltyRates.Should().Be(dto.PenaltyRates);
@@ -65,8 +69,8 @@ namespace VideoClub.Services.Unit.Tests.MoviesManagerServiceTests
 
             await sut.Add(dto);
 
-           repositoryMock.Verify(_=>_.Add(It.IsAny<Movie>()), Times.Once);
-            unitOfWorkMock.Verify(_=>_.Complete(), Times.Once);
+            repositoryMock.Verify(_ => _.Add(It.IsAny<Movie>()), Times.Once);
+            unitOfWorkMock.Verify(_ => _.Complete(), Times.Once);
         }
     }
 

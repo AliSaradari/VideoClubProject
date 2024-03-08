@@ -17,9 +17,9 @@ namespace VideoClub.Services.Genres
             _unitOfWork = unitOfWork;
         }
 
-        public Task<List<GetGenreDto>> Get()
+        public async Task<List<GetGenreDto>> Get(GetGenreFilterDto dto)
         {
-           return _repository.Get();
+            return _repository.Get(dto);
         }
     }
 }

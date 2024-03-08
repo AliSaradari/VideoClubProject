@@ -7,9 +7,10 @@ namespace VideoClub.Services.Genres.Contracts
     {
         void Add(Genre genre);
         void Delete(Genre genre);
+        void Update(Genre genre); 
         Genre FindGenreById(int id);
-        List<GetGenreManagerDto> ManagerGet();
+        List<GetGenreManagerDto> ManagerGet(GetGenreManagerFilterDto filterDto);
         bool IsExistGenre(string title);
-        Task<List<GetGenreDto>> Get();
+        List<GetGenreDto> Get(GetGenreFilterDto dto);
     }
 }

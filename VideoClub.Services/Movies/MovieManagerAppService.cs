@@ -11,7 +11,7 @@ namespace VideoClub.Services.Movies
         private readonly MovieRepository _repository;
         private readonly UnitOfWork _unitOfWork;
         private readonly DateTimeService _dateTimeService;
-       
+
         public MovieManagerAppService(
             MovieRepository repository,
             UnitOfWork unitOfWork,

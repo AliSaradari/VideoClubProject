@@ -1,6 +1,12 @@
 ﻿using FluentAssertions;
+using Moq;
+using VideoClub.Contracts.Interfaces;
+using VideoClub.Entities.Genres;
+using VideoClub.Entities.Movies;
 using VideoClub.Persistence.EF;
+using VideoClub.Services.Genres;
 using VideoClub.Services.Genres.Contracts;
+using VideoClub.Services.Genres.Contracts.Dtos;
 using VideoClub.Services.Genres.Exceptions;
 using VideoClub.Test.Tools.Genres;
 using VideoClub.Test.Tools.Infrastructure.DatabaseConfig.Unit;
@@ -27,6 +33,28 @@ namespace VideoClub.Services.Unit.Tests.GenreManagerServiceTests
             var dto = UpdateGenreDtoFactory.Create();
 
             await _sut.Update(genre.Id, dto);
+
+            var actual = _readContext.Genres.Single();
+            actual.Title.Should().Be(dto.Title);
+        }
+        [Fact]
+        public async void Update_update_a_genre_properly_mock()
+        {
+            var genre = new GenreBuilder().Build();
+            genre.Id = 1;
+            var dto = UpdateGenreDtoFactory.Create();
+            var repositoryMock = new Mock<GenreRepository>();
+            var unitOfWorkMock = new Mock<UnitOfWork>();
+            var dateTimeServiceMock = new Mock<DateTimeService>();
+            dateTimeServiceMock.Setup(_ => _.Now()).Returns(new DateTime(2024, 11, 21));
+            var sut = new GenreManagerAppService(repositoryMock.Object, unitOfWorkMock.Object, dateTimeServiceMock.Object);
+            repositoryMock.Setup(_ => _.FindGenreById(genre.Id)).Returns(genre);
+
+            await sut.Update(genre.Id, dto);
+
+            unitOfWorkMock.Verify(_ => _.Complete(),Times.Once);            
+
+
         }
         [Fact]
         public async void Update_throw_exception_when_genre_doesnt_exist()
@@ -36,7 +64,7 @@ namespace VideoClub.Services.Unit.Tests.GenreManagerServiceTests
 
             var actual = () => _sut.Update(id, dto);
 
-            actual.Should().ThrowExactlyAsync<GenreNotFoundException>();
+            await actual.Should().ThrowExactlyAsync<GenreNotFoundException>();
         }
         [Fact]
         public async void Update_throw_exception_when_updated_genre_is_duplicated()
@@ -50,7 +78,7 @@ namespace VideoClub.Services.Unit.Tests.GenreManagerServiceTests
 
             var actual = () => _sut.Update(genre.Id, dto);
 
-            actual.Should().ThrowExactlyAsync<ThisGenreAlreadyIsExistException>();
+            await actual.Should().ThrowExactlyAsync<ThisGenreAlreadyIsExistException>();
         }
     }
 }

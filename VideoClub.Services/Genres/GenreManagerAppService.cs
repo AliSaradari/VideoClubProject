@@ -10,13 +10,16 @@ namespace VideoClub.Services.Genres
     {
         private readonly GenreRepository _repository;
         private readonly UnitOfWork _unitOfWork;
+        private readonly DateTimeService _dateTimeService;
         public GenreManagerAppService(
             GenreRepository repository,
-            UnitOfWork unitOfWork
+            UnitOfWork unitOfWork,
+            DateTimeService dateTimeService
             )
         {
             _repository = repository;
             _unitOfWork = unitOfWork;
+            _dateTimeService = dateTimeService;
         }
 
         public async Task Add(AddGenreDto dto)
@@ -29,6 +32,7 @@ namespace VideoClub.Services.Genres
             var genre = new Genre()
             {
                 Title = dto.Title,
+                CreatedAt = _dateTimeService.Now()
             };
             _repository.Add(genre);
             await _unitOfWork.Complete();
@@ -45,9 +49,9 @@ namespace VideoClub.Services.Genres
             await _unitOfWork.Complete();
         }
 
-        public async Task<List<GetGenreManagerDto>> Get()
+        public async Task<List<GetGenreManagerDto>> Get(GetGenreManagerFilterDto filterDto)
         {
-            return _repository.ManagerGet();
+            return _repository.ManagerGet(filterDto);
         }
 
         public async Task Update(int id, UpdateGenreDto dto)

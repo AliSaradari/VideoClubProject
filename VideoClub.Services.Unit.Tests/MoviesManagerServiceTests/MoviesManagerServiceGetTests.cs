@@ -48,23 +48,24 @@ namespace VideoClub.Services.Unit.Tests.MoviesManagerServiceTests
             _context.Save(movie);
             var filtedDto = new GetMovieManagerFilterDtoBuilder().Build();
 
-            await _sut.Get(filtedDto);
+           var actual = await _sut.Get(filtedDto);
 
-            var actual = _readContext.Movies.Single();
-            actual.Title.Should().Be(movie.Title);
-            actual.Description.Should().Be(movie.Description);
-            actual.PublishYear.Should().Be(movie.PublishYear);
-            actual.Director.Should().Be(movie.Director);
-            actual.Duration.Should().Be(movie.Duration);
-            actual.GenreId.Should().Be(movie.GenreId);
-            actual.MinimumAllowedAge.Should().Be(movie.MinimumAllowedAge);
-            actual.DailyRentalPrice.Should().Be(movie.DailyRentalPrice);
-            actual.PenaltyRates.Should().Be(movie.PenaltyRates);
-            actual.Count.Should().Be(movie.Count);
+            var result = actual.Single();
+            result.Title.Should().Be(movie.Title);
+            result.Description.Should().Be(movie.Description);
+            result.PublishYear.Should().Be(movie.PublishYear);
+            result.Director.Should().Be(movie.Director);
+            result.Duration.Should().Be(movie.Duration);
+            result.GenreId.Should().Be(movie.GenreId);
+            result.MinimumAllowedAge.Should().Be(movie.MinimumAllowedAge);
+            result.DailyRentalPrice.Should().Be(movie.DailyRentalPrice);
+            result.PenaltyRates.Should().Be(movie.PenaltyRates);
+            result.Count.Should().Be(movie.Count);
         }
 
         [Theory]
         [InlineData("Interstaller", "Interstaller")]
+        [InlineData("Interstaller", "Inters")]
         public async Task Get_gets_films_filtered_by_name(string name, string filter)
         {
             var genre = new GenreBuilder().Build();

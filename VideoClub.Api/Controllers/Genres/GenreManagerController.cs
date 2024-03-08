@@ -25,12 +25,12 @@ namespace VideoClub.Api.Controllers.Genres
             await _service.Update(id, dto);
         }
         [HttpGet]
-        public async Task<List<GetGenreManagerDto>> Get()
+        public async Task<List<GetGenreManagerDto>> Get([FromBody] GetGenreManagerFilterDto dto)
         {
-            return await _service.Get();
+            return await _service.Get(dto);
         }
         [HttpDelete("{id}")]
-        public async Task Delete([FromRoute]int id)
+        public async Task Delete([FromRoute] int id)
         {
             await _service.Delete(id);
         }

@@ -33,6 +33,7 @@ namespace VideoClub.Services.Unit.Tests.MoviesManagerServiceTests
             var actual = _readContext.Movies.FirstOrDefault();
             actual.Should().BeNull();
         }
+        
         [Fact]
         public async void Delete_throw_excpotion_when_movie_doesnt_exist()
         {
@@ -40,7 +41,7 @@ namespace VideoClub.Services.Unit.Tests.MoviesManagerServiceTests
 
             var actual = () => _sut.Delete(dummyId);
 
-            actual.Should().ThrowExactlyAsync<MovieNotFoundException>();
+            await actual.Should().ThrowExactlyAsync<MovieNotFoundException>();
         }
     }
 }
