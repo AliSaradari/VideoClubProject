@@ -8,6 +8,7 @@ namespace VideoClub.Services.Movies.Contracts
         void Add(Movie movie);
         void Delete(Movie movie);
         Movie FindById(int id);
-        List<GetMovieManagerDto> Get(GetMovieManagerFilterDto filterDto);
+        List<GetMovieDto> Get(GetMovieFilterDto dto);
+        List<GetMovieManagerDto> ManagerGet(GetMovieManagerFilterDto dto);
     }
 }

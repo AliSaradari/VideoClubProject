@@ -4,11 +4,11 @@ namespace VideoClub.Test.Tools.Moives
 {
     public static class AddMovieDtoFactory
     {
-        public static AddMovieDto Create(int genreId)
+        public static AddMovieDto Create(int genreId,string? title = null,int? count = null)
         {
             return new AddMovieDto()
             {
-                Title = "dummy-title",
+                Title = title ?? "dummy-title",
                 Description = "dummy_description",
                 PublishYear = "2002",
                 Director = "dummy_director",
@@ -17,7 +17,7 @@ namespace VideoClub.Test.Tools.Moives
                 MinimumAllowedAge = 18,
                 DailyRentalPrice = 10,
                 PenaltyRates = 20,
-                Count = 1,
+                Count = count ?? 1,
             };
         }
     }

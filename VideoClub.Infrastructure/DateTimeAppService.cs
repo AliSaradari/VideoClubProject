@@ -7,7 +7,7 @@ namespace VideoClub.Infrastructure
       
         DateTime DateTimeService.Now()
         {
-           return DateTime.Now;
+           return DateTime.UtcNow;
         }
     }
 }

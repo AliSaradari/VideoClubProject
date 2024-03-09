@@ -1,5 +1,7 @@
 ﻿using VideoClub.Contracts.Interfaces;
 using VideoClub.Entities.Movies;
+using VideoClub.Services.Genres.Contracts;
+using VideoClub.Services.Genres.Exceptions;
 using VideoClub.Services.Movies.Contracts;
 using VideoClub.Services.Movies.Contracts.Dtos;
 using VideoClub.Services.Movies.Exceptions;
@@ -11,20 +13,28 @@ namespace VideoClub.Services.Movies
         private readonly MovieRepository _repository;
         private readonly UnitOfWork _unitOfWork;
         private readonly DateTimeService _dateTimeService;
+        private readonly GenreRepository _genreRepository;
 
         public MovieManagerAppService(
             MovieRepository repository,
             UnitOfWork unitOfWork,
-            DateTimeService dateTimeService
+            DateTimeService dateTimeService,
+            GenreRepository genreRepository
            )
         {
             _repository = repository;
             _unitOfWork = unitOfWork;
             _dateTimeService = dateTimeService;
+            _genreRepository = genreRepository;
         }
 
         public async Task Add(AddMovieDto dto)
         {
+            var IsExistGenre = _genreRepository.FindGenreById(dto.GenreId);
+            if (IsExistGenre == null)
+            {
+                throw new GenreNotFoundException();
+            }
             var movie = new Movie()
             {
                 Title = dto.Title,
@@ -37,7 +47,7 @@ namespace VideoClub.Services.Movies
                 DailyRentalPrice = dto.DailyRentalPrice,
                 PenaltyRates = dto.PenaltyRates,
                 Count = dto.Count,
-                CreatedAt = _dateTimeService.Now()
+                CreateAt = _dateTimeService.Now()
             };
             _repository.Add(movie);
             await _unitOfWork.Complete();
@@ -56,7 +66,7 @@ namespace VideoClub.Services.Movies
 
         public async Task<List<GetMovieManagerDto>> Get(GetMovieManagerFilterDto filterDto)
         {
-            return _repository.Get(filterDto);
+            return _repository.ManagerGet(filterDto);
         }
 
         public async Task Update(int id, UpdateMovieDto dto)

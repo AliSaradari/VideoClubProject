@@ -79,20 +79,6 @@ namespace VideoClub.Services.Unit.Tests.GenreManagerServiceTests
             actual.Count.Should().Be(1);
             actual.Single().Id.Should().Be(genre.Id);
         }
-        [Fact]
-        public async void Get_the_get_method_work_properly_mock()
-        {
-            //var genre = new GenreBuilder().Build();
-            //genre.Id = 1;
-            //var dto = UpdateGenreDtoFactory.Create();
-            var repositoryMock = new Mock<GenreRepository>();
-            var unitOfWorkMock = new Mock<UnitOfWork>();
-            var dateTimeServiceMock = new Mock<DateTimeService>();
-            dateTimeServiceMock.Setup(_ => _.Now()).Returns(new DateTime(2024, 11, 21));
-            var sut = new GenreManagerAppService(repositoryMock.Object, unitOfWorkMock.Object, dateTimeServiceMock.Object);
-            //repositoryMock.Setup(_ => _.FindGenreById(genre.Id)).Returns(genre);
-
-            //sut.Get();
-        }
+        
     }
 }

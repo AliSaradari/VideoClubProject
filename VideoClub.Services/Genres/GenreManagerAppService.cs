@@ -32,7 +32,7 @@ namespace VideoClub.Services.Genres
             var genre = new Genre()
             {
                 Title = dto.Title,
-                CreatedAt = _dateTimeService.Now()
+                CreateAt = _dateTimeService.Now()
             };
             _repository.Add(genre);
             await _unitOfWork.Complete();

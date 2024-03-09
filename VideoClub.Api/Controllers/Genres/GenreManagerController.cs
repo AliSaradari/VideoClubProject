@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
+using VideoClub.Contracts.Interfaces;
 using VideoClub.Services.Genres.Contracts;
 using VideoClub.Services.Genres.Contracts.Dtos;
 
@@ -10,6 +11,7 @@ namespace VideoClub.Api.Controllers.Genres
     public class GenreManagerController : ControllerBase
     {
         private readonly GenreManagerService _service;
+
         public GenreManagerController(GenreManagerService service)
         {
             _service = service;
@@ -25,7 +27,7 @@ namespace VideoClub.Api.Controllers.Genres
             await _service.Update(id, dto);
         }
         [HttpGet]
-        public async Task<List<GetGenreManagerDto>> Get([FromBody] GetGenreManagerFilterDto dto)
+        public async Task<List<GetGenreManagerDto>> Get([FromQuery] GetGenreManagerFilterDto dto)
         {
             return await _service.Get(dto);
         }

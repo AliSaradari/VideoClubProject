@@ -31,8 +31,4 @@
     <ProjectReference Include="..\VideoClub.Test.Tools\VideoClub.Test.Tools.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="MoviesServiceTests\" />
-  </ItemGroup>
-
 </Project>

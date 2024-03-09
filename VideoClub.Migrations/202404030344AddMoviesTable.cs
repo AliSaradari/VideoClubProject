@@ -19,17 +19,17 @@ namespace VideoClub.Migrations
         {
             Create.Table("Movies")
                 .WithColumn("Id").AsInt32().PrimaryKey().Identity()
-                .WithColumn("Title").AsString(50).NotNullable()
-                .WithColumn("Description").AsString(200).NotNullable()
-                .WithColumn("PublishYear").AsString(4).NotNullable()
-                .WithColumn("Director").AsString(50).NotNullable()
+                .WithColumn("Title").AsString().NotNullable()
+                .WithColumn("Description").AsString().NotNullable()
+                .WithColumn("PublishYear").AsString().NotNullable()
+                .WithColumn("Director").AsString().NotNullable()
                 .WithColumn("Duration").AsInt32().NotNullable()
                 .WithColumn("GenreId").AsInt32().NotNullable().ForeignKey("Fk_Genres_Movies", "Genres", "Id")
                 .WithColumn("MinimumAllowedAge").AsInt32().NotNullable()
                 .WithColumn("DailyRentalPrice").AsDecimal().NotNullable()
                 .WithColumn("PenaltyRates").AsDecimal().NotNullable()
                 .WithColumn("Count").AsInt32().NotNullable()
-                .WithColumn("Rate").AsFloat().NotNullable();
+                .WithColumn("CreateAt").AsDateTime().NotNullable();
 
 
 

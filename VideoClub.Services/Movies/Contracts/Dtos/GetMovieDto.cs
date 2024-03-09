@@ -1,10 +1,13 @@
-﻿using VideoClub.Entities.Genres;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace VideoClub.Entities.Movies
+namespace VideoClub.Services.Movies.Contracts.Dtos
 {
-    public class Movie
+    public class GetMovieDto
     {
-        public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string PublishYear { get; set; }
@@ -15,7 +18,5 @@ namespace VideoClub.Entities.Movies
         public decimal DailyRentalPrice { get; set; }
         public decimal PenaltyRates { get; set; }
         public int Count { get; set; }
-        public Genre genre { get; set; }
-        public DateTime CreateAt { get; set; }
     }
 }

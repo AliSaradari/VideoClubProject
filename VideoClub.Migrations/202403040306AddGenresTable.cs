@@ -15,7 +15,7 @@ namespace VideoClub.Migrations
             Create.Table("Genres")
                 .WithColumn("Id").AsInt32().PrimaryKey().Identity()
                 .WithColumn("Title").AsString(50).NotNullable()
-                .WithColumn("Rate").AsFloat().WithDefaultValue(0).NotNullable();            
+                .WithColumn("CreateAt").AsDateTime().NotNullable();
         }
     }
 }

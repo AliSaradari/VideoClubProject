@@ -11,6 +11,7 @@ namespace VideoClub.Persistence.EF.Genres
             _.HasKey(_ => _.Id);
             _.Property(_ => _.Id).ValueGeneratedOnAdd();
             _.Property(_ => _.Title).IsRequired().HasMaxLength(50);
+            _.Property(_ => _.CreateAt).IsRequired();
         }
     }
 }

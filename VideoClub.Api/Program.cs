@@ -1,10 +1,14 @@
 
 using Microsoft.EntityFrameworkCore;
 using VideoClub.Contracts.Interfaces;
+using VideoClub.Infrastructure;
 using VideoClub.Persistence.EF;
 using VideoClub.Persistence.EF.Genres;
+using VideoClub.Persistence.EF.Movies;
 using VideoClub.Services.Genres;
 using VideoClub.Services.Genres.Contracts;
+using VideoClub.Services.Movies;
+using VideoClub.Services.Movies.Contracts;
 
 namespace VideoClub.Api
 {
@@ -29,6 +33,11 @@ namespace VideoClub.Api
             builder.Services.AddScoped<GenreService, GenreAppService>();
             builder.Services.AddScoped<GenreManagerService, GenreManagerAppService>();
             builder.Services.AddScoped<GenreRepository, EfGenreRepository>();
+            builder.Services.AddScoped<DateTimeService, DateTimeAppService>();
+            builder.Services.AddScoped<MovieService, MovieAppService>();
+            builder.Services.AddScoped<MovieManagerService, MovieManagerAppService>();
+            builder.Services.AddScoped<MovieRepository, EfMovieRepository>();
+
 
             var app = builder.Build();
 

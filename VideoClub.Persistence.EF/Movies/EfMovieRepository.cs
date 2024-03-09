@@ -28,7 +28,29 @@ namespace VideoClub.Persistence.EF.Movies
             return _movies.FirstOrDefault(_ => _.Id == id);
         }
 
-        public List<GetMovieManagerDto> Get(GetMovieManagerFilterDto filterDto)
+        public List<GetMovieDto> Get(GetMovieFilterDto dto)
+        {
+            var result = _movies.Select(m => new GetMovieDto()
+            {
+                Title = m.Title,
+                Description = m.Description,
+                PublishYear = m.PublishYear,
+                Director = m.Director,
+                Duration = m.Duration,
+                GenreId = m.GenreId,
+                MinimumAllowedAge = m.MinimumAllowedAge,
+                DailyRentalPrice = m.DailyRentalPrice,
+                PenaltyRates = m.PenaltyRates,
+                Count = m.Count,
+            });
+            if (dto.Title != null)
+            {
+                result = result.Where(m => m.Title.Replace(" ", string.Empty).ToLower().Contains(dto.Title.Replace(" ", string.Empty).ToLower()));
+            }
+            return result.ToList();
+        }
+
+        public List<GetMovieManagerDto> ManagerGet(GetMovieManagerFilterDto dto)
         {
             var result = _movies.Select(m => new GetMovieManagerDto()
             {
@@ -44,9 +66,9 @@ namespace VideoClub.Persistence.EF.Movies
                 PenaltyRates = m.PenaltyRates,
                 Count = m.Count,
             });
-            if(filterDto.Title != null)
+            if(dto.Title != null)
             {
-                result = result.Where(m => m.Title.Replace(" ", string.Empty).ToLower().Contains(filterDto.Title.Replace(" ",string.Empty).ToLower()));
+                result = result.Where(m => m.Title.Replace(" ", string.Empty).ToLower().Contains(dto.Title.Replace(" ",string.Empty).ToLower()));
             }
             return result.ToList();
         }
