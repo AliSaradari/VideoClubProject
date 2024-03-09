@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace VideoClub.Test.Tools.Infrastructure.DatabaseConfig.Unit
+namespace VideoClub.Test.Tools.Infrastructure.DatabaseConfig
 {
     public static class DbContextHelper
     {

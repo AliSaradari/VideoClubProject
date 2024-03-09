@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using VideoClub.Contracts.Interfaces;
+﻿using VideoClub.Contracts.Interfaces;
 using VideoClub.Services.Movies.Contracts;
 using VideoClub.Services.Movies.Contracts.Dtos;
 

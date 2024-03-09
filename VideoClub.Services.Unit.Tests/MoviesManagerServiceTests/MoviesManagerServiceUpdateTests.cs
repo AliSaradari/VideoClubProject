@@ -3,6 +3,7 @@ using VideoClub.Persistence.EF;
 using VideoClub.Services.Movies.Contracts;
 using VideoClub.Services.Movies.Exceptions;
 using VideoClub.Test.Tools.Genres;
+using VideoClub.Test.Tools.Infrastructure.DatabaseConfig;
 using VideoClub.Test.Tools.Infrastructure.DatabaseConfig.Unit;
 using VideoClub.Test.Tools.Moives;
 

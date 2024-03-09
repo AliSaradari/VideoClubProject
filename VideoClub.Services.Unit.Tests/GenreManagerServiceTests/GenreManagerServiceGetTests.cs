@@ -1,11 +1,9 @@
 ﻿using FluentAssertions;
-using Moq;
-using VideoClub.Contracts.Interfaces;
 using VideoClub.Persistence.EF;
-using VideoClub.Services.Genres;
 using VideoClub.Services.Genres.Contracts;
 using VideoClub.Services.Genres.Contracts.Dtos;
 using VideoClub.Test.Tools.Genres;
+using VideoClub.Test.Tools.Infrastructure.DatabaseConfig;
 using VideoClub.Test.Tools.Infrastructure.DatabaseConfig.Unit;
 
 namespace VideoClub.Services.Unit.Tests.GenreManagerServiceTests

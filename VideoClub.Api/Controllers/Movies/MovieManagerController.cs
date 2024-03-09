@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using VideoClub.Services.Genres.Contracts.Dtos;
+﻿using Microsoft.AspNetCore.Mvc;
 using VideoClub.Services.Movies.Contracts;
 using VideoClub.Services.Movies.Contracts.Dtos;
 

@@ -1,12 +1,8 @@
 ﻿using FluentAssertions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using VideoClub.Persistence.EF;
 using VideoClub.Services.Movies.Contracts;
 using VideoClub.Test.Tools.Genres;
+using VideoClub.Test.Tools.Infrastructure.DatabaseConfig;
 using VideoClub.Test.Tools.Infrastructure.DatabaseConfig.Unit;
 using VideoClub.Test.Tools.Moives;
 

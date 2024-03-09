@@ -1,18 +1,14 @@
 ﻿using FluentAssertions;
-using Microsoft.EntityFrameworkCore;
 using Moq;
-using System;
 using VideoClub.Contracts.Interfaces;
-using VideoClub.Entities.Genres;
 using VideoClub.Entities.Movies;
 using VideoClub.Persistence.EF;
-using VideoClub.Persistence.EF.Movies;
 using VideoClub.Services.Genres.Contracts;
 using VideoClub.Services.Genres.Exceptions;
 using VideoClub.Services.Movies;
 using VideoClub.Services.Movies.Contracts;
-using VideoClub.Services.Movies.Exceptions;
 using VideoClub.Test.Tools.Genres;
+using VideoClub.Test.Tools.Infrastructure.DatabaseConfig;
 using VideoClub.Test.Tools.Infrastructure.DatabaseConfig.Unit;
 using VideoClub.Test.Tools.Moives;
 

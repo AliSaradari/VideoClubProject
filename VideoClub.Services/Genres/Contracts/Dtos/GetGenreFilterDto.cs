@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace VideoClub.Services.Genres.Contracts.Dtos
+﻿namespace VideoClub.Services.Genres.Contracts.Dtos
 {
     public class GetGenreFilterDto
     {

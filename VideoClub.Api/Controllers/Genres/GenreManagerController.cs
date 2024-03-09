@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
-using VideoClub.Contracts.Interfaces;
 using VideoClub.Services.Genres.Contracts;
 using VideoClub.Services.Genres.Contracts.Dtos;
 

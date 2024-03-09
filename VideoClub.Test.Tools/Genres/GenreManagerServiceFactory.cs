@@ -1,5 +1,4 @@
 ﻿using Moq;
-using System;
 using VideoClub.Contracts.Interfaces;
 using VideoClub.Persistence.EF;
 using VideoClub.Persistence.EF.Genres;

@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace VideoClub.Services.Genres.Contracts.Dtos
+﻿namespace VideoClub.Services.Genres.Contracts.Dtos
 {
     public class GetGenreDto
     {
