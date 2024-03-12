@@ -9,6 +9,7 @@ namespace VideoClub.Services.Movies.Contracts
         void Delete(Movie movie);
         Movie FindById(int id);
         List<GetMovieDto> Get(GetMovieFilterDto dto);
+        bool IsExistMovie(string title);
         List<GetMovieManagerDto> ManagerGet(GetMovieManagerFilterDto dto);
     }
 }

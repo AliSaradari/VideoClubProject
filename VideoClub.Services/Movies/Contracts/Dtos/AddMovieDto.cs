@@ -4,13 +4,13 @@ namespace VideoClub.Services.Movies.Contracts.Dtos
 {
     public class AddMovieDto
     {
-        [Required]
+        [Required,MaxLength(50)]
         public string Title { get; set; }
-        [Required]
+        [Required,MaxLength(200)]
         public string Description { get; set; }
-        [Required]
+        [Required,MaxLength(5)]
         public string PublishYear { get; set; }
-        [Required]
+        [Required,MaxLength(50)]
         public string Director { get; set; }
         [Required]
         public int Duration { get; set; }

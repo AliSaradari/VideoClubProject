@@ -6,6 +6,7 @@ using VideoClub.Test.Tools.Genres;
 using VideoClub.Test.Tools.Infrastructure.DatabaseConfig;
 using VideoClub.Test.Tools.Infrastructure.DatabaseConfig.Unit;
 using VideoClub.Test.Tools.Moives;
+using Xunit;
 
 namespace VideoClub.Services.Unit.Tests.MoviesManagerServiceTests
 {

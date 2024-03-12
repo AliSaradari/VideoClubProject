@@ -35,6 +35,19 @@ namespace VideoClub.Services.Movies
             {
                 throw new GenreNotFoundException();
             }
+            if (dto.Count < 0)
+            {
+                throw new CountCannotBeNegativeException();
+            }
+            if (string.IsNullOrWhiteSpace(dto.Title))
+            {
+                throw new TitleCannotBeEmptyException();
+            }
+            var checkDuplicateTitle = _repository.IsExistMovie(dto.Title);
+            if(checkDuplicateTitle == true)
+            {
+                throw new TitleCannotBeDuplicateException();
+            }
             var movie = new Movie()
             {
                 Title = dto.Title,

@@ -8,6 +8,7 @@ using VideoClub.Services.Genres.Exceptions;
 using VideoClub.Test.Tools.Genres;
 using VideoClub.Test.Tools.Infrastructure.DatabaseConfig;
 using VideoClub.Test.Tools.Infrastructure.DatabaseConfig.Unit;
+using Xunit;
 
 namespace VideoClub.Services.Unit.Tests.GenreManagerServiceTests
 {

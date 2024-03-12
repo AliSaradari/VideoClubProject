@@ -7,37 +7,34 @@ using VideoClub.Services.Genres.Contracts;
 using VideoClub.Services.Genres.Exceptions;
 using VideoClub.Services.Movies;
 using VideoClub.Services.Movies.Contracts;
+using VideoClub.Services.Movies.Exceptions;
 using VideoClub.Test.Tools.Genres;
 using VideoClub.Test.Tools.Infrastructure.DatabaseConfig;
 using VideoClub.Test.Tools.Infrastructure.DatabaseConfig.Unit;
 using VideoClub.Test.Tools.Moives;
+using Xunit;
 
 namespace VideoClub.Services.Unit.Tests.MoviesManagerServiceTests
 {
-    public class MoviesManagerServiceAddTests
+    public class MoviesManagerServiceAddTests : BusinessUnitTest
     {
         private readonly MovieManagerService _sut;
-        private readonly EFDataContext _context;
-        private readonly EFDataContext _readContext;
         private readonly DateTime _fakeDate;
         public MoviesManagerServiceAddTests()
         {
-            var db = new EFInMemoryDatabase();
-            _context = db.CreateDataContext<EFDataContext>();
-            _readContext = db.CreateDataContext<EFDataContext>();
             _fakeDate = new DateTime(2023, 10, 10);
-            _sut = MovieManagerServiceFactory.Create(_context, _fakeDate);
+            _sut = MovieManagerServiceFactory.Create(SetupContext, _fakeDate);
         }
         [Fact]
         public async void Add_add_a_new_movie_properly()
         {
             var genre = new GenreBuilder().Build();
-            _context.Save(genre);
+            DbContext.Save(genre);
             var dto = AddMovieDtoFactory.Create(genre.Id);
 
             await _sut.Add(dto);
 
-            var actual = _readContext.Movies.Single();
+            var actual = ReadContext.Movies.Single();
             actual.Title.Should().Be(dto.Title);
             actual.Description.Should().Be(dto.Description);
             actual.PublishYear.Should().Be(dto.PublishYear);
@@ -60,35 +57,35 @@ namespace VideoClub.Services.Unit.Tests.MoviesManagerServiceTests
 
             actual.Should().ThrowExactlyAsync<GenreNotFoundException>();
         }
-        //[Fact]
-        //public async void Add_throw_exception_while_adding_new_movie_when_title_is_empty()
-        //{
-        //    var genre = new GenreBuilder().Build();
-        //    _context.Save(genre);
-        //    var dto = AddMovieDtoFactory.Create(genre.Id, " ");
+        [Fact]
+        public async void Add_throw_exception_while_adding_new_movie_when_title_is_empty()
+        {
+            var genre = new GenreBuilder().Build();
+            DbContext.Save(genre);
+            var dto = AddMovieDtoFactory.Create(genre.Id, " ");
 
-        //    var actual = () => _sut.Add(dto);
+            var actual = () => _sut.Add(dto);
 
-        //    actual.Should().ThrowExactlyAsync<TitleCannotBeEmptyException>();
-        //}
-        //[Fact]
-        //public async void Add_throw_exception_while_adding_new_movie_when_count_is_negative()
-        //{
-        //    var genre = new GenreBuilder().Build();
-        //    _context.Save(genre);
-        //    var dto = AddMovieDtoFactory.Create(genre.Id, count: -3);
+            await actual.Should().ThrowExactlyAsync<TitleCannotBeEmptyException>();
+        }
+        [Fact]
+        public async void Add_throw_exception_while_adding_new_movie_when_count_is_negative()
+        {
+            var genre = new GenreBuilder().Build();
+            DbContext.Save(genre);
+            var dto = AddMovieDtoFactory.Create(genre.Id, count: -3);
 
-        //    var actual = () => _sut.Add(dto);
+            var actual = () => _sut.Add(dto);
 
-        //    actual.Should().ThrowExactlyAsync<CountCannotBeNegativeException>();
+            await actual.Should().ThrowExactlyAsync<CountCannotBeNegativeException>();
 
 
-        //}
+        }
         [Fact]
         public async void Add_add_a_new_movie_properly_moq()
         {
             var genre = new GenreBuilder().Build();
-            _context.Save(genre);
+            DbContext.Save(genre);
             var dto = AddMovieDtoFactory.Create(genre.Id);
 
             var repositoryMock = new Mock<MovieRepository>();

@@ -7,7 +7,7 @@
         public string PublishYear { get; set; }
         public string Director { get; set; }
         public int Duration { get; set; }
-        public int GenreId { get; set; }
+        public string GenreTitle { get; set; }
         public int MinimumAllowedAge { get; set; }
         public decimal DailyRentalPrice { get; set; }
         public decimal PenaltyRates { get; set; }

@@ -5,6 +5,7 @@ using VideoClub.Test.Tools.Genres;
 using VideoClub.Test.Tools.Infrastructure.DatabaseConfig;
 using VideoClub.Test.Tools.Infrastructure.DatabaseConfig.Unit;
 using VideoClub.Test.Tools.Moives;
+using Xunit;
 
 namespace VideoClub.Services.Unit.Tests.MoviesServiceTests
 {
@@ -53,7 +54,7 @@ namespace VideoClub.Services.Unit.Tests.MoviesServiceTests
             result.PublishYear.Should().Be(movie.PublishYear);
             result.Director.Should().Be(movie.Director);
             result.Duration.Should().Be(movie.Duration);
-            result.GenreId.Should().Be(movie.GenreId);
+            result.GenreTitle.Should().Be(genre.Title);
             result.MinimumAllowedAge.Should().Be(movie.MinimumAllowedAge);
             result.DailyRentalPrice.Should().Be(movie.DailyRentalPrice);
             result.PenaltyRates.Should().Be(movie.PenaltyRates);

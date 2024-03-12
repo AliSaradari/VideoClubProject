@@ -16,7 +16,7 @@ namespace VideoClub.Api.Controllers.Genres
             _service = service;
         }
         [HttpPost]
-        public async Task Add([Required][FromBody] AddGenreDto dto)
+        public async Task Add([Required][FromQuery] AddGenreDto dto)
         {
             await _service.Add(dto);
         }
